@@ -35,6 +35,8 @@ Unfortunately, fraud comes in multiple forms and is found in various technology.
 
 - [1] https://rice.bootcampcontent.com/Rice-Coding-Bootcamp/rice-hou-fin-pt-09-2020-u-c/tree/master/hw/07-SQL/Instructions
 
+- [2] https://www.quickdatabasediagrams.com/
+
 ---
 
 ## Status

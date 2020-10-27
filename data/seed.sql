@@ -1,4 +1,6 @@
-INSERT INTO card_holder VALUES
+INSERT INTO card_holder
+(id, name)
+VALUES
     (1, 'Robert Johnson'),
     (2, 'Shane Shaffer'),
     (3, 'Elizabeth Sawyer'),
@@ -25,7 +27,9 @@ INSERT INTO card_holder VALUES
     (24, 'Stephanie Dalton'),
     (25, 'Nancy Contreras');
 
-INSERT INTO credit_card VALUES
+INSERT INTO credit_card
+(card, id_card_holder)
+VALUES
     (3517111172421930, 1),
     (4761049645711555811, 1),
     (4866761290278198714, 2),
@@ -80,14 +84,18 @@ INSERT INTO credit_card VALUES
     (4319653513507, 25),
     (372414832802279, 25);
 
-INSERT INTO merchant_category VALUES
+INSERT INTO merchant_category
+(id, name)
+VALUES
     (1, 'restaurant'),
     (2, 'coffee shop'),
     (3, 'bar'),
     (4, 'pub'),
     (5, 'food truck');
 
-INSERT INTO merchant VALUES
+INSERT INTO merchant
+(id, name, id_merchant_category)
+VALUES
     (1, 'Murphy, Heath and Fields', 1),
     (2, 'Riggs-Adams', 1),
     (3, 'Sanders, Parks and Mcfarland', 2),
@@ -239,7 +247,9 @@ INSERT INTO merchant VALUES
     (149, 'Clark and Sons', 5),
     (150, 'Johnson and Sons', 2);
 
-INSERT INTO transaction VALUES
+INSERT INTO transaction
+(id, date, amount, card, id_merchant)
+VALUES
     (222, '2018-01-01 21:35:10', 6.22, 3561954487988605, 69),
     (2045, '2018-01-01 21:43:12', 3.83, 5135837688671496, 85),
     (395, '2018-01-01 22:41:21', 9.61, 213193946980303, 82),

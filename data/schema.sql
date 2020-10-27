@@ -1,6 +1,7 @@
 ﻿-- Exported from QuickDBD: https://www.quickdatabasediagrams.com/
 -- NOTE! If you have used non-SQL datatypes in your design, you will have to change these here.
 
+DROP TABLE IF EXISTS card_holder;
 
 CREATE TABLE "card_holder" (
     "id" SERIAL   NOT NULL,
@@ -10,6 +11,10 @@ CREATE TABLE "card_holder" (
      )
 );
 
+
+
+DROP TABLE IF EXISTS credit_card;
+
 CREATE TABLE "credit_card" (
     "card" VARCHAR(20)   NOT NULL,
     "id_card_holder" INT   NOT NULL,
@@ -17,6 +22,10 @@ CREATE TABLE "credit_card" (
         "card"
      )
 );
+
+
+
+DROP TABLE IF EXISTS merchant_category;
 
 CREATE TABLE "merchant_category" (
     "id" SERIAL   NOT NULL,
@@ -26,6 +35,10 @@ CREATE TABLE "merchant_category" (
      )
 );
 
+
+
+DROP TABLE IF EXISTS merchant;
+
 CREATE TABLE "merchant" (
     "id" SERIAL   NOT NULL,
     "name" VARCHAR(100)   NOT NULL,
@@ -34,6 +47,10 @@ CREATE TABLE "merchant" (
         "id"
      )
 );
+
+
+
+DROP TABLE IF EXISTS transaction;
 
 CREATE TABLE "transaction" (
     "id" INT   NOT NULL,
