@@ -1,78 +1,68 @@
 ﻿-- Exported from QuickDBD: https://www.quickdatabasediagrams.com/
+-- Link to schema: https://app.quickdatabasediagrams.com/#/d/T7mAoO
 -- NOTE! If you have used non-SQL datatypes in your design, you will have to change these here.
 
-DROP TABLE IF EXISTS card_holder;
+-- drops tables if exist
+DROP TABLE IF EXISTS card_holder CASCADE;
+DROP TABLE IF EXISTS credit_card CASCADE;
+DROP TABLE IF EXISTS merchant_category CASCADE;
+DROP TABLE IF EXISTS merchant CASCADE;
+DROP TABLE IF EXISTS transaction CASCADE;
 
 CREATE TABLE "card_holder" (
-    "id" SERIAL   NOT NULL,
-    "name" VARCHAR(100)   NOT NULL,
+    "card_holder_id" SERIAL   NOT NULL,
+    "card_holder_name" VARCHAR(100)   NOT NULL,
     CONSTRAINT "pk_card_holder" PRIMARY KEY (
-        "id"
+        "card_holder_id"
      )
 );
-
-
-
-DROP TABLE IF EXISTS credit_card;
 
 CREATE TABLE "credit_card" (
-    "card" VARCHAR(20)   NOT NULL,
-    "id_card_holder" INT   NOT NULL,
+    "credit_card_number" VARCHAR(20)   NOT NULL,
+    "card_holder_id" INT   NOT NULL,
     CONSTRAINT "pk_credit_card" PRIMARY KEY (
-        "card"
+        "credit_card_number"
      )
 );
-
-
-
-DROP TABLE IF EXISTS merchant_category;
 
 CREATE TABLE "merchant_category" (
-    "id" SERIAL   NOT NULL,
-    "name" VARCHAR(100)   NOT NULL,
+    "merchant_category_id" SERIAL   NOT NULL,
+    "merchant_category_name" VARCHAR(100)   NOT NULL,
     CONSTRAINT "pk_merchant_category" PRIMARY KEY (
-        "id"
+        "merchant_category_id"
      )
 );
-
-
-
-DROP TABLE IF EXISTS merchant;
 
 CREATE TABLE "merchant" (
-    "id" SERIAL   NOT NULL,
-    "name" VARCHAR(100)   NOT NULL,
-    "id_merchant_category" INT   NOT NULL,
+    "merchant_id" SERIAL   NOT NULL,
+    "merchant_name" VARCHAR(100)   NOT NULL,
+    "merchant_category_id" INT   NOT NULL,
     CONSTRAINT "pk_merchant" PRIMARY KEY (
-        "id"
+        "merchant_id"
      )
 );
 
-
-
-DROP TABLE IF EXISTS transaction;
-
 CREATE TABLE "transaction" (
-    "id" INT   NOT NULL,
-    "date" TIMESTAMP   NOT NULL,
-    "amount" FLOAT   NOT NULL,
-    "card" VARCHAR(20)   NOT NULL,
-    "id_merchant" INT   NOT NULL,
+    "transaction_id" INT   NOT NULL,
+    "transaction_date" TIMESTAMP   NOT NULL,
+    "transaction_amount" FLOAT   NOT NULL,
+    "credit_card_number" VARCHAR(20)   NOT NULL,
+    "merchant_id" INT   NOT NULL,
 
-    CONSTRAINT "uc_transaction_id" UNIQUE (
-        "id"
+    CONSTRAINT "uc_transaction_transaction_id" UNIQUE (
+        "transaction_id"
     )
 );
 
-ALTER TABLE "credit_card" ADD CONSTRAINT "fk_credit_card_id_card_holder" FOREIGN KEY("id_card_holder")
-REFERENCES "card_holder" ("id");
+ALTER TABLE "credit_card" ADD CONSTRAINT "fk_credit_card_card_holder_id" FOREIGN KEY("card_holder_id")
+REFERENCES "card_holder" ("card_holder_id");
 
-ALTER TABLE "merchant" ADD CONSTRAINT "fk_merchant_id_merchant_category" FOREIGN KEY("id_merchant_category")
-REFERENCES "merchant_category" ("id");
+ALTER TABLE "merchant" ADD CONSTRAINT "fk_merchant_merchant_category_id" FOREIGN KEY("merchant_category_id")
+REFERENCES "merchant_category" ("merchant_category_id");
 
-ALTER TABLE "transaction" ADD CONSTRAINT "fk_transaction_card" FOREIGN KEY("card")
-REFERENCES "credit_card" ("card");
+ALTER TABLE "transaction" ADD CONSTRAINT "fk_transaction_credit_card_number" FOREIGN KEY("credit_card_number")
+REFERENCES "credit_card" ("credit_card_number");
 
-ALTER TABLE "transaction" ADD CONSTRAINT "fk_transaction_id_merchant" FOREIGN KEY("id_merchant")
-REFERENCES "merchant" ("id");
+ALTER TABLE "transaction" ADD CONSTRAINT "fk_transaction_merchant_id" FOREIGN KEY("merchant_id")
+REFERENCES "merchant" ("merchant_id");
 
