@@ -1,5 +1,5 @@
 INSERT INTO card_holder
-(id, name)
+(card_holder_id, card_holder_name)
 VALUES
     (1, 'Robert Johnson'),
     (2, 'Shane Shaffer'),
@@ -28,7 +28,7 @@ VALUES
     (25, 'Nancy Contreras');
 
 INSERT INTO credit_card
-(card, id_card_holder)
+(credit_card_number, card_holder_id)
 VALUES
     (3517111172421930, 1),
     (4761049645711555811, 1),
@@ -85,7 +85,7 @@ VALUES
     (372414832802279, 25);
 
 INSERT INTO merchant_category
-(id, name)
+(merchant_category_id, merchant_category_name)
 VALUES
     (1, 'restaurant'),
     (2, 'coffee shop'),
@@ -94,7 +94,7 @@ VALUES
     (5, 'food truck');
 
 INSERT INTO merchant
-(id, name, id_merchant_category)
+(merchant_id, merchant_name, merchant_category_id)
 VALUES
     (1, 'Murphy, Heath and Fields', 1),
     (2, 'Riggs-Adams', 1),
@@ -248,7 +248,7 @@ VALUES
     (150, 'Johnson and Sons', 2);
 
 INSERT INTO transaction
-(id, date, amount, card, id_merchant)
+(transaction_id, transaction_date, transaction_amount, credit_card_number, merchant_id)
 VALUES
     (222, '2018-01-01 21:35:10', 6.22, 3561954487988605, 69),
     (2045, '2018-01-01 21:43:12', 3.83, 5135837688671496, 85),

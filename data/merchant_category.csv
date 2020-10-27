@@ -1,4 +1,4 @@
-id,name
+merchant_category_id,merchant_category_name
 1,restaurant
 2,coffee shop
 3,bar
