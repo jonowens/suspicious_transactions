@@ -37,6 +37,8 @@ Unfortunately, fraud comes in multiple forms and is found in various technology.
 
 - [2] https://www.quickdatabasediagrams.com/
 
+- [3] https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.between_time.html
+
 ---
 
 ## Status
